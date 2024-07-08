@@ -15,6 +15,18 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
     />
+    <script>
+      function includeHTML() {
+        const elements = document.querySelectorAll("[data-include-html]");
+        elements.forEach((element) => {
+          const file = element.getAttribute("data-include-html");
+          fetch(file)
+            .then((response) => response.text())
+            .then((data) => (element.innerHTML = data));
+        });
+      }
+      document.addEventListener("DOMContentLoaded", includeHTML);
+    </script>
   </head>
   <script src="https://use.fontawesome.com/994d15f2d3.js"></script>
 
